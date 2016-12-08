@@ -4,6 +4,7 @@
   "description": "Vietnamese chatbot framework",
   "main": "server.js",
   "scripts": {
+    "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +28,9 @@
   },
   "devDependencies": {
     "eslint": "^3.11.1",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "json-loader": "^0.5.4",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0"
   }
