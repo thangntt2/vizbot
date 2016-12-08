@@ -4,8 +4,13 @@
   "description": "Vietnamese chatbot framework",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:dev": "webpack --colors --progress --config ./webpack.config.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "concurrently --kill-others \"npm run watch:dev\"",
+    "server": "BLUEBIRD_DEBUG=1 NODE_ENV=development forever --minUptime 1000 --spinSleepTime 1000 --workingDir $(pwd) --watch --watchDirectory build/ src/server.js",
+    "lint": "eslint .",
+    "clean": "rm -rf build/*",
+    "dev": "concurrently --kill-others \"npm run watch\" \"npm run server\""
   },
   "repository": {
     "type": "git",
@@ -32,6 +37,8 @@
     "babel-loader": "^6.2.3",
     "json-loader": "^0.5.4",
     "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "concurrently": "^3.1.0",
+    "forever": "^0.15.3"
   }
 }

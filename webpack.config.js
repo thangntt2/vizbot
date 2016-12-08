@@ -9,10 +9,11 @@ fs.readdirSync('node_modules')
   })
 
 module.exports = {
+  context: path.join(__dirname, './src'),
   entry: './server.js',
   target: 'node',
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, './build'),
     filename: 'backend.js'
   },
   module: {
@@ -38,7 +39,7 @@ module.exports = {
   ],
   devtool: 'sourcemap',
   devServer: {
-    contentBase: './src',
+    contentBase: __dirname + '/build',
     hot: true,
   },
 }
