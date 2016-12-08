@@ -1,0 +1,33 @@
+{
+  "name": "vizbot",
+  "version": "0.1.0",
+  "description": "Vietnamese chatbot framework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/thangntt2/vizbot.git"
+  },
+  "keywords": [
+    "chatbot",
+    "nlp",
+    "machine",
+    "learning"
+  ],
+  "author": "thangntt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thangntt2/vizbot/issues"
+  },
+  "homepage": "https://github.com/thangntt2/vizbot#readme",
+  "dependencies": {
+    "hapi": "^16.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
