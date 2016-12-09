@@ -2,6 +2,7 @@ import { Server } from 'hapi'
 import Inert from 'inert'
 import Vision from 'vision'
 import HapiSwagger from 'hapi-swagger'
+import api from './api/swagger/swagger.yaml'
 
 export async function main() {
   const server = new Server()
@@ -15,6 +16,7 @@ export async function main() {
     Vision,
     {
       register: HapiSwagger,
+      options: api,
     }])
 
   await server.start()
