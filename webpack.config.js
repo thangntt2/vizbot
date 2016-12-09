@@ -1,5 +1,5 @@
-var webpack = require('webpack')
-var path = require('path')
+const webpack = require('webpack')
+const path = require('path')
 const webpackNodeExternals = require('webpack-node-externals')
 
 module.exports = {
@@ -8,7 +8,8 @@ module.exports = {
   target: 'node',
   output: {
     path: path.join(__dirname, './build'),
-    filename: 'index.js'
+    filename: 'index.js',
+    libraryTarget: 'umd',
   },
   module: {
     loaders: [
@@ -22,8 +23,8 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json',
-      }
-    ]
+      },
+    ],
   },
   externals: webpackNodeExternals(),
   plugins: [
@@ -31,12 +32,8 @@ module.exports = {
     new webpack.BannerPlugin('require("source-map-support").install();',
                              { raw: true, entryOnly: false }),
     new webpack.ProvidePlugin({
-      Promise: 'bluebird'
-    })
+      Promise: 'bluebird',
+    }),
   ],
   devtool: 'sourcemap',
-  devServer: {
-    contentBase: __dirname + '/build',
-    hot: true,
-  },
 }
