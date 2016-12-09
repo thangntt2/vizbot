@@ -21,8 +21,9 @@ module.exports = {
         ],
       },
       {
-        test: /\.json$/,
-        loader: 'json',
+        test: /(\.json|\.yml|\.yaml)$/,
+        loader: 'json-schema',
+        exclude: /(node_modules|bower_components)/,
       },
     ],
   },
