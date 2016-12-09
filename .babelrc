@@ -1,0 +1,29 @@
+{
+  "sourceMap": true,
+  "presets": [
+    "stage-2",
+    ["env", {
+      "targets": {
+        "node": 6,
+      },
+      "debug": false,
+    }]
+  ],
+  "plugins": [
+    "add-module-exports",
+    "lodash",
+    "source-map-support-for-6",
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul",
+      ],
+    },
+    "production": {
+      "presets": [
+        "babili",
+      ],
+    },
+  }
+}

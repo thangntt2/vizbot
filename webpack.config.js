@@ -1,12 +1,6 @@
 var webpack = require('webpack')
 var path = require('path')
-var fs = require('fs')
-
-var nodeModules = {}
-fs.readdirSync('node_modules')
-  .filter(function(x) {
-    return ['.bin'].indexOf(x) === -1
-  })
+const webpackNodeExternals = require('webpack-node-externals')
 
 module.exports = {
   context: path.join(__dirname, './src'),
@@ -14,12 +8,12 @@ module.exports = {
   target: 'node',
   output: {
     path: path.join(__dirname, './build'),
-    filename: 'backend.js'
+    filename: 'index.js'
   },
   module: {
     loaders: [
       {
-        test: /\.(js)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loaders: [
           'babel-loader',
@@ -28,14 +22,17 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json',
-      },
+      }
     ]
   },
-  externals: nodeModules,
+  externals: webpackNodeExternals(),
   plugins: [
     new webpack.IgnorePlugin(/\.(css|less)$/),
     new webpack.BannerPlugin('require("source-map-support").install();',
-                             { raw: true, entryOnly: false })
+                             { raw: true, entryOnly: false }),
+    new webpack.ProvidePlugin({
+      Promise: 'bluebird'
+    })
   ],
   devtool: 'sourcemap',
   devServer: {
